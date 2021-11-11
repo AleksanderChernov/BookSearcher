@@ -1,25 +1,31 @@
 import { ActionList } from '../action-list/action-list';
-import { Action } from '../actions/actions';
+import { Actions } from '../actions/actions';
 
 interface BooksState {
   isLoading: boolean; // Или загрузка идет или нет
-  booksData: {}; //Postman вовращает большой объект
-  error: {} | null; //Ошибка тоже объект
+  booksData: string[]; // Postman вовращает большой аррей с объектами
+  error: {} | null; // Ошибка тоже объект
 }
 
-const reducer = (state: BooksState, action: Action): BooksState => {
+const initialState = {
+  isLoading: false,
+  booksData: [],
+  error: null
+}
+
+const reducer = (state: BooksState = initialState, action: Actions): BooksState => {
   if (action) {
     if (action.type === ActionList.Search) {
       return {
         isLoading: true,
-        booksData: {},
+        booksData: [],
         error: null,
       }
     }
     if (action.type === ActionList.SearchFailed) {
       return {
         isLoading: false,
-        booksData: {},
+        booksData: [],
         error: action.payload,
       }
     }

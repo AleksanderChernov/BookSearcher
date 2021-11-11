@@ -1,0 +1,12 @@
+.found-books {
+  min-width: 75%;
+  background-color: grey;
+  padding-top: 43px;
+  position: relative;
+}
+
+/* Title */
+@import url(./__title/Found-books__title.css);
+
+/* Grid-wrapper */
+@import url(./__grid-wrapper/Found-books__grid-wrapper.css);

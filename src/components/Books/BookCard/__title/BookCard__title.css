@@ -1,0 +1,4 @@
+.book-card__title {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
