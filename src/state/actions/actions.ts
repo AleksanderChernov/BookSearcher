@@ -11,7 +11,7 @@ interface SearchBooksFail {
 
 interface SearchBooksSuccess {
   type: ActionList.SearchSuccessful;
-  payload: {};
+  payload: string[];
 }
 
-export type Action = SearchAction | SearchBooksFail | SearchBooksSuccess;
+export type Actions = SearchAction | SearchBooksFail | SearchBooksSuccess;

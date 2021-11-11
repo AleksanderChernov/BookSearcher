@@ -1,0 +1,10 @@
+.search-bar__input {
+  padding: 20px;
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+.search-bar__input:focus {
+  outline: none;
+  border: 2px solid purple;
+}

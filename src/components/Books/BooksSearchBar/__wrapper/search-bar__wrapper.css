@@ -1,0 +1,11 @@
+.search-bar__wrapper {
+  margin: 0;
+  padding: 0;
+  min-width: 15%;
+  max-width: 25%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-items: center;
+  background: linear-gradient(gold, teal);
+}
