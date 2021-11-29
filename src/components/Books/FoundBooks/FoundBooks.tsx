@@ -6,10 +6,10 @@ const FoundBooks: React.FC = () => {
   const { booksData, error, isLoading } = useTypedSelector((state) => state.bookItems);
 
   return <div className="found-books">
-    <h1 className="found-books__title">Books that I found</h1>
+    {isLoading && <h1 className="found-books__title">Поиск в процессе</h1>}
     <div className="found-books__grid-wrapper">
       {!error && !isLoading && booksData.map((item: any) => <BookCard
-        key={item.publishedDate}
+        key={item.publishedDate + item.title}
         authors={item.authors}
         categories={item.categories}
         title={item.categories}

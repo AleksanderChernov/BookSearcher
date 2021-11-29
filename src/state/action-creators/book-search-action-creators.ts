@@ -4,21 +4,25 @@ import { ActionList } from "../action-list/action-list";
 import { Actions } from '../actions/actions';
 import { Dispatch } from 'redux';
 
-/* const dispatch = useDispatch(); */
-
-export const searchForBooks = (item: string) => {
+export const searchForBooks = (item: string, chosenSubject: string, chosenRelevance: string) => {
   return async (dispatch: Dispatch<Actions>) => {
     dispatch({
       type: ActionList.Search
     });
 
     try {
-      const { data } = await axios.get('https://books.googleapis.com/books/v1/volumes?', {
-        params: {
-          q: item,
-          maxResults: 40
-        }
-      });
+      const { data } = await
+        axios.get('https://books.googleapis.com/books/v1/volumes?q='
+          + item
+          + '+subject:'
+          + chosenSubject
+          + '&orderBy='
+          + chosenRelevance,
+          {
+            params: {
+              maxResults: 40,
+            }
+          });
 
       const searchResults = data.items.map((items: any) => {
         return items.volumeInfo;
