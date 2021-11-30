@@ -4,9 +4,11 @@ import { store } from '../state';
 import Books from './Books/Books';
 
 function App() {
-  return <Provider store={store}>
-    <Books />
-  </Provider>
+  return (
+    <Provider store={store}>
+      <Books />
+    </Provider>
+  );
 }
 
 export default App;

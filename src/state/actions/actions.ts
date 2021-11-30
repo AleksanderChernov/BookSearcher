@@ -1,4 +1,6 @@
-import { ActionList } from '../action-list/action-list'
+import { ActionList } from '../action-list/action-list';
+import { BookItem } from '../reducers/booksReducers';
+
 
 interface SearchAction {
   type: ActionList.Search;
@@ -6,12 +8,12 @@ interface SearchAction {
 
 interface SearchBooksFail {
   type: ActionList.SearchFailed;
-  payload: {};
+  payload: string;
 }
 
 interface SearchBooksSuccess {
   type: ActionList.SearchSuccessful;
-  payload: string[];
+  payload: BookItem[];
 }
 
 export type Actions = SearchAction | SearchBooksFail | SearchBooksSuccess;

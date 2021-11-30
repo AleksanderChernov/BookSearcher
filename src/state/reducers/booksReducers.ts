@@ -3,8 +3,17 @@ import { Actions } from '../actions/actions';
 
 interface BooksState {
   isLoading: boolean; // Или загрузка идет или нет
-  booksData: string[]; // Postman вовращает большой аррей с объектами
-  error: {} | null; // Ошибка тоже объект
+  booksData: BookItem[]; // Postman вовращает большой аррей с объектами
+  error: string | null; // Ошибка тоже объект
+}
+
+export interface BookItem {
+  publishedDate: string;
+  author: string;
+  authors: string[];
+  categories: string[];
+  title: string;
+  imageLinks: string;
 }
 
 const initialState = {

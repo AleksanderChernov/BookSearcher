@@ -23,7 +23,7 @@ export const searchForBooks = (item: string, chosenSubject: string, chosenReleva
               maxResults: 40,
             }
           });
-
+      console.log(data)
       const searchResults = data.items.map((items: any) => {
         return items.volumeInfo;
       })
@@ -34,9 +34,10 @@ export const searchForBooks = (item: string, chosenSubject: string, chosenReleva
       })
 
     } catch (err: any) {
+      console.log(err.message)
       dispatch({
         type: ActionList.SearchFailed,
-        payload: err.message,
+        payload: 'По вашему запросу ничего не найдено',
       })
     }
   };
