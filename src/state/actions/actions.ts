@@ -1,6 +1,5 @@
-import { ActionList } from '../action-list/action-list';
-import { BookItem } from '../reducers/booksReducers';
-
+import ActionList from '../action-list/action-list';
+import { BookItem } from '../models';
 
 interface SearchAction {
   type: ActionList.Search;

@@ -1,57 +1,48 @@
-import { ActionList } from '../action-list/action-list';
+import { Reducer } from 'redux';
+import ActionList from '../action-list/action-list';
+import { BookItem } from '../models';
 import { Actions } from '../actions/actions';
 
 interface BooksState {
   isLoading: boolean; // Или загрузка идет или нет
   booksData: BookItem[]; // Postman вовращает большой аррей с объектами
-  error: string | null; // Ошибка тоже объект
-}
-
-export interface BookItem {
-  publishedDate: string;
-  author: string;
-  authors: string[];
-  categories: string[];
-  title: string;
-  imageLinks: string;
+  error: string | null; // Ошибка теперь строка
 }
 
 const initialState = {
   isLoading: false,
   booksData: [],
-  error: null
-}
+  error: null,
+};
 
-const reducer = (state: BooksState = initialState, action: Actions): BooksState => {
+const booksReducer: Reducer<BooksState, Actions> = (state = initialState, action): BooksState => {
   if (action) {
     if (action.type === ActionList.Search) {
       return {
         isLoading: true,
         booksData: [],
         error: null,
-      }
+      };
     }
     if (action.type === ActionList.SearchFailed) {
       return {
         isLoading: false,
         booksData: [],
         error: action.payload,
-      }
+      };
     }
     if (action.type === ActionList.SearchSuccessful) {
       return {
         isLoading: false,
         booksData: action.payload,
         error: null,
-      }
+      };
     }
-    else {
-      return state;
-    }
-  }
-  else {
+
     return state;
   }
-}
 
-export default reducer
+  return state;
+};
+
+export default booksReducer;
