@@ -3,7 +3,7 @@ import { ClickedBookItem } from '../models';
 
 interface AddClikedBook {
   type: clickedBooksActionList.Add,
-  payload: ClickedBookItem
+  payload: ClickedBookItem[]
 }
 
 interface clearClickedBook {

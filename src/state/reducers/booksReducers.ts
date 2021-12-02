@@ -15,7 +15,7 @@ const initialState = {
   error: null,
 };
 
-const booksReducer:
+export const booksReducer:
 Reducer<BooksState, BooksReducerActions> = (state = initialState, action): BooksState => {
   if (action) {
     if (action.type === booksActionList.Search) {
@@ -45,5 +45,3 @@ Reducer<BooksState, BooksReducerActions> = (state = initialState, action): Books
 
   return state;
 };
-
-export default booksReducer;

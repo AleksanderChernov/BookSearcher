@@ -1,7 +1,7 @@
 import './SearchBar.css';
 import React, { useCallback, useState } from 'react';
 import useTypedSelector from '../../../hooks/useTypedSelector';
-import useActions from '../../../hooks/useActions';
+import { useBookSearchActions } from '../../../hooks/useBookSearchActions';
 
 enum errEnum {
   err400 = 'Request failed with status code 400',
@@ -11,7 +11,7 @@ const BookSearchBar: React.FC = () => {
   const [bookName, setBookName] = useState('');
   const [chosenSubject, setChosenSubject] = useState('all');
   const [chosenRelevance, setChosenRelevance] = useState('relevance');
-  const { searchForBooks } = useActions();
+  const { searchForBooks } = useBookSearchActions();
   const { error, isLoading } = useTypedSelector(
     (state) => state.bookItems,
   );

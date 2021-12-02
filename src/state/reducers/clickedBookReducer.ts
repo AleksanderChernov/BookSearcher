@@ -4,11 +4,11 @@ import { ClickedBookItem } from '../models';
 import { ClickedBooksReducerActions } from '../actions/clickedBooksReducerActions';
 
 interface ClickedBookState {
-  data: ClickedBookItem[]
+  ClickedBookData: ClickedBookItem[]
 }
 
 const initialClickedBookState = {
-  data: [],
+  ClickedBookData: [],
 };
 
 export const clickedBookReducer:
@@ -19,12 +19,12 @@ Reducer<ClickedBookState, ClickedBooksReducerActions> = (
   if (action) {
     if (action.type === clickedBooksActionList.Add) {
       return {
-        data: action.payload,
+        ClickedBookData: action.payload,
       };
     }
     if (action.type === clickedBooksActionList.Clear) {
       return {
-        data: [],
+        ClickedBookData: [],
       };
     }
   }

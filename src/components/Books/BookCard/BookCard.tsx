@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+import { useDispatch } from 'react-redux';
 import {
   NavLink, Route, Routes, useNavigate,
 } from 'react-router-dom';
 import React from 'react';
+import { useBookBindActions } from '../../../hooks/useBookBindActions';
 import placeholderImage from '../../../images/annelies-geneyn-unsplash-book-placeholder.jpg';
 import './BookCard.css';
-import { Book } from '../Book/Book';
+import { ClickedBookItem } from '../../../state/models';
 
 interface IProps {
   authors: string[];
@@ -29,9 +31,15 @@ const BookCard: React.FC<IProps> = ({
     : placeholderImage;
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { bindBookInfo } = useBookBindActions();
+  const item: ClickedBookItem[] = [{
+    authors, title, categories, authorsInfo, imageInfo, imageLinks, categoriesInfo, titleInfo,
+  }];
 
   const handleOpen = () => {
     navigate(`../book/${title}`);
+    dispatch(bindBookInfo(item));
   };
 
   return (
@@ -41,24 +49,6 @@ const BookCard: React.FC<IProps> = ({
       <img className="book-card__thumbnail" src={imageInfo} alt={titleInfo} />
       <h3 className="book-card__info">{authorsInfo}</h3>
       <h3 className="book-card__info">{categoriesInfo}</h3>
-      {/* <NavLink to={`../books/${authors}+${title}`}>{title}</NavLink> */}
-      {/*       <Routes>
-        <Route
-          path="../books/:writer"
-          element={(
-            <Book
-              authors={authors}
-              categories={categories}
-              title={title}
-              imageLinks={imageLinks}
-              authorsInfo={authorsInfo}
-              categoriesInfo={categoriesInfo}
-              titleInfo={titleInfo}
-              imageInfo={imageInfo}
-            />
-)}
-        />
-      </Routes> */}
     </article>
   );
 };

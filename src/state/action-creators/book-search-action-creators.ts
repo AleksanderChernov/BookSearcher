@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import ActionList from '../action-list/action-list';
+import { booksActionList } from '../action-list/action-list';
 import { BooksReducerActions } from '../actions/booksReducerActions';
 
 export const searchForBooks = (
@@ -9,7 +9,7 @@ export const searchForBooks = (
   chosenRelevance: string,
 ) => async (dispatch: Dispatch<BooksReducerActions>) => {
   dispatch({
-    type: ActionList.Search,
+    type: booksActionList.Search,
   });
 
   try {
@@ -25,12 +25,12 @@ export const searchForBooks = (
     const searchResults = data.items.map((items: any) => items.volumeInfo);
 
     dispatch({
-      type: ActionList.SearchSuccessful,
+      type: booksActionList.SearchSuccessful,
       payload: searchResults,
     });
   } catch (err: any) {
     dispatch({
-      type: ActionList.SearchFailed,
+      type: booksActionList.SearchFailed,
       payload: 'По вашему запросу ничего не найдено',
     });
   }
