@@ -5,7 +5,6 @@ import { BookItem } from '../../../state/models';
 import './FoundBooks.css';
 
 const FoundBooks: React.FC = () => {
-  console.log(useTypedSelector((state) => state));
   const { booksData, error, isLoading } = useTypedSelector(
     (state) => state.bookItems,
   );

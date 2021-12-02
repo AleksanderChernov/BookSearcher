@@ -17,7 +17,6 @@ const BookSearchBar: React.FC = () => {
   );
 
   const sendForm = (e: React.FormEvent<HTMLFormElement>) => {
-    console.log(bookName, chosenSubject, chosenRelevance);
     e.preventDefault();
     searchForBooks(bookName, chosenSubject, chosenRelevance);
   };

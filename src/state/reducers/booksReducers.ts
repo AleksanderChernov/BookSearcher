@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
-import ActionList from '../action-list/action-list';
+import { booksActionList } from '../action-list/action-list';
 import { BookItem } from '../models';
-import { Actions } from '../actions/actions';
+import { BooksReducerActions } from '../actions/booksReducerActions';
 
 interface BooksState {
   isLoading: boolean; // Или загрузка идет или нет
@@ -15,23 +15,24 @@ const initialState = {
   error: null,
 };
 
-const booksReducer: Reducer<BooksState, Actions> = (state = initialState, action): BooksState => {
+const booksReducer:
+Reducer<BooksState, BooksReducerActions> = (state = initialState, action): BooksState => {
   if (action) {
-    if (action.type === ActionList.Search) {
+    if (action.type === booksActionList.Search) {
       return {
         isLoading: true,
         booksData: [],
         error: null,
       };
     }
-    if (action.type === ActionList.SearchFailed) {
+    if (action.type === booksActionList.SearchFailed) {
       return {
         isLoading: false,
         booksData: [],
         error: action.payload,
       };
     }
-    if (action.type === ActionList.SearchSuccessful) {
+    if (action.type === booksActionList.SearchSuccessful) {
       return {
         isLoading: false,
         booksData: action.payload,

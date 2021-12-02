@@ -1,7 +1,10 @@
-enum actionList {
+export enum booksActionList {
   Search = 'searchBooks',
   SearchFailed = 'searchBooksFail',
   SearchSuccessful = 'searchBooksSuccess'
 }
 
-export default actionList;
+export enum clickedBooksActionList {
+  Add = 'addClickedBook',
+  Clear = 'clearClickedBook'
+}

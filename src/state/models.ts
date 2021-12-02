@@ -6,3 +6,14 @@ export interface BookItem {
   title: string;
   imageLinks: string;
 }
+
+export interface ClickedBookItem {
+  authors: string[];
+  categories: string[];
+  title: string;
+  imageLinks: any;
+  authorsInfo: string;
+  categoriesInfo: string;
+  titleInfo: string;
+  imageInfo: string;
+}

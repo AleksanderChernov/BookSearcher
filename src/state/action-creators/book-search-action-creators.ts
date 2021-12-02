@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
 import ActionList from '../action-list/action-list';
-import { Actions } from '../actions/actions';
+import { BooksReducerActions } from '../actions/booksReducerActions';
 
 export const searchForBooks = (
   item: string,
   chosenSubject: string,
   chosenRelevance: string,
-) => async (dispatch: Dispatch<Actions>) => {
+) => async (dispatch: Dispatch<BooksReducerActions>) => {
   dispatch({
     type: ActionList.Search,
   });
