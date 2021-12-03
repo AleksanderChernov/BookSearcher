@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { booksActionList } from '../action-list/action-list';
+import { BooksActionList } from '../action-list/action-list';
 import { BookItem } from '../models';
 import { BooksReducerActions } from '../actions/booksReducerActions';
 
@@ -15,33 +15,30 @@ const initialState = {
   error: null,
 };
 
-export const booksReducer:
-Reducer<BooksState, BooksReducerActions> = (state = initialState, action): BooksState => {
-  if (action) {
-    if (action.type === booksActionList.Search) {
+// eslint-disable-next-line max-len
+export const booksReducer = (state: BooksState = initialState, action: BooksReducerActions): BooksState => {
+  switch (action.type) {
+    case BooksActionList.Search: {
       return {
         isLoading: true,
         booksData: [],
         error: null,
       };
     }
-    if (action.type === booksActionList.SearchFailed) {
+    case BooksActionList.SearchFailed: {
       return {
         isLoading: false,
         booksData: [],
         error: action.payload,
       };
     }
-    if (action.type === booksActionList.SearchSuccessful) {
+    case BooksActionList.SearchSuccessful: {
       return {
         isLoading: false,
         booksData: action.payload,
         error: null,
       };
     }
-
-    return state;
+    default: return state;
   }
-
-  return state;
 };

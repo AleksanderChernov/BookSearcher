@@ -7,6 +7,6 @@ export const BookPage: VFC = () => {
 
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <Book {...bookInfo} />
+    <Book {...bookInfo.clickedBookData} />
   );
 };

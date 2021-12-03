@@ -1,19 +1,18 @@
 import { Dispatch } from 'redux';
-import { clickedBooksActionList } from '../action-list/action-list';
+import { ClickedBooksActionList } from '../action-list/action-list';
 import { ClickedBooksReducerActions } from '../actions/clickedBooksReducerActions';
 import { ClickedBookItem } from '../models';
 
-export const bindBookInfo = (item: ClickedBookItem[]) => (
+export const bindBookInfo = (item: ClickedBookItem) => (
   dispatch: Dispatch<ClickedBooksReducerActions>,
 ) => {
-  dispatch({
-    type: clickedBooksActionList.Add,
+  console.log(item);
+  return dispatch({
+    type: ClickedBooksActionList.Add,
     payload: item,
   });
 };
 
-export const clearBookInfo = () => (dipatch: Dispatch<ClickedBooksReducerActions>) => {
-  dipatch({
-    type: clickedBooksActionList.Clear,
-  });
-};
+export const clearBookInfo = () => (dispatch: Dispatch<ClickedBooksReducerActions>) => dispatch({
+  type: ClickedBooksActionList.Clear,
+});

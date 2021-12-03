@@ -1,13 +1,13 @@
-import { clickedBooksActionList } from '../action-list/action-list';
+import { ClickedBooksActionList } from '../action-list/action-list';
 import { ClickedBookItem } from '../models';
 
-interface AddClikedBook {
-  type: clickedBooksActionList.Add,
-  payload: ClickedBookItem[]
+export interface AddClickedBook {
+  type: ClickedBooksActionList.Add,
+  payload: ClickedBookItem
 }
 
-interface clearClickedBook {
-  type: clickedBooksActionList.Clear
+export interface ClearClickedBook {
+  type: ClickedBooksActionList.Clear
 }
 
-export type ClickedBooksReducerActions = AddClikedBook | clearClickedBook
+export type ClickedBooksReducerActions = AddClickedBook | ClearClickedBook

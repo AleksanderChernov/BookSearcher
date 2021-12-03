@@ -1,32 +1,31 @@
 import { Reducer } from 'react';
-import { clickedBooksActionList } from '../action-list/action-list';
+import { ClickedBooksActionList } from '../action-list/action-list';
 import { ClickedBookItem } from '../models';
 import { ClickedBooksReducerActions } from '../actions/clickedBooksReducerActions';
 
 interface ClickedBookState {
-  ClickedBookData: ClickedBookItem[]
+  clickedBookData: ClickedBookItem;
 }
 
 const initialClickedBookState = {
-  ClickedBookData: [],
+  clickedBookData: {} as ClickedBookItem,
 };
 
-export const clickedBookReducer:
-Reducer<ClickedBookState, ClickedBooksReducerActions> = (
-  state = initialClickedBookState,
-  action,
+export const clickedBookReducer = (
+  state: ClickedBookState = initialClickedBookState,
+  action: ClickedBooksReducerActions,
 ): ClickedBookState => {
-  if (action) {
-    if (action.type === clickedBooksActionList.Add) {
+  switch (action.type) {
+    case ClickedBooksActionList.Add: {
       return {
-        ClickedBookData: action.payload,
+        clickedBookData: action.payload,
       };
     }
-    if (action.type === clickedBooksActionList.Clear) {
+    case ClickedBooksActionList.Clear: {
       return {
-        ClickedBookData: [],
+        clickedBookData: {} as ClickedBookItem,
       };
     }
+    default: return state;
   }
-  return state;
 };

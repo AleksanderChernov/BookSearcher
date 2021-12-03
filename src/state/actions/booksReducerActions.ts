@@ -1,17 +1,17 @@
-import { booksActionList } from '../action-list/action-list';
+import { BooksActionList } from '../action-list/action-list';
 import { BookItem } from '../models';
 
 interface SearchAction {
-  type: booksActionList.Search;
+  type: BooksActionList.Search;
 }
 
 interface SearchBooksFail {
-  type: booksActionList.SearchFailed;
+  type: BooksActionList.SearchFailed;
   payload: string;
 }
 
 interface SearchBooksSuccess {
-  type: booksActionList.SearchSuccessful;
+  type: BooksActionList.SearchSuccessful;
   payload: BookItem[];
 }
 

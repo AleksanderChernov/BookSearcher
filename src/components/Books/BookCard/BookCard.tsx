@@ -33,13 +33,13 @@ const BookCard: React.FC<IProps> = ({
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { bindBookInfo } = useBookBindActions();
-  const item: ClickedBookItem[] = [{
+  const item: ClickedBookItem = {
     authors, title, categories, authorsInfo, imageInfo, imageLinks, categoriesInfo, titleInfo,
-  }];
+  };
 
   const handleOpen = () => {
-    navigate(`../book/${title}`);
     dispatch(bindBookInfo(item));
+    navigate(`../book/${title}`);
   };
 
   return (
