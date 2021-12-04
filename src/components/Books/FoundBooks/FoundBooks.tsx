@@ -27,6 +27,11 @@ const FoundBooks: React.FC = () => {
           && !isLoading
           && booksData.map((item: BookItem) => (
             <BookCard
+              canonicalVolumeLink={item.canonicalVolumeLink}
+              description={item.description}
+              pageCount={item.pageCount}
+              language={item.language}
+              publishedDate={item.publishedDate}
               key={item.publishedDate + item.title}
               authors={item.authors}
               categories={item.categories}

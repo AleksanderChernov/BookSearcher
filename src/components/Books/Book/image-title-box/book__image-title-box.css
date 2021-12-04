@@ -1,0 +1,4 @@
+.book__image-title-box {
+	display: flex;
+	flex-flow: row;
+}

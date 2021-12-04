@@ -22,6 +22,7 @@ export const searchForBooks = (
         },
       },
     );
+    console.log(data);
     const searchResults = data.items.map((items: any) => items.volumeInfo);
 
     dispatch({

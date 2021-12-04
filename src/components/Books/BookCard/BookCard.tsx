@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Col, Typography } from 'antd';
+import { Card, Col, Typography } from 'antd';
 import { useDispatch } from 'react-redux';
 import {
   NavLink, Route, Routes, useNavigate,
@@ -17,10 +17,16 @@ interface IProps {
   categories: string[];
   title: string;
   imageLinks: any;
+  description: string;
+  canonicalVolumeLink: string;
+  pageCount: number;
+  language: string;
+  publishedDate: string;
 }
 
 const BookCard: React.FC<IProps> = ({
-  authors, categories, imageLinks, title,
+  authors, categories, imageLinks, title, description,
+  canonicalVolumeLink, pageCount, language, publishedDate,
 }: IProps) => {
   const authorsInfo = authors
     ? authors.join(', ')
@@ -37,7 +43,19 @@ const BookCard: React.FC<IProps> = ({
   const dispatch = useDispatch();
   const { bindBookInfo } = useBookBindActions();
   const item: ClickedBookItem = {
-    authors, title, categories, authorsInfo, imageInfo, imageLinks, categoriesInfo, titleInfo,
+    authors,
+    title,
+    categories,
+    authorsInfo,
+    imageInfo,
+    imageLinks,
+    categoriesInfo,
+    titleInfo,
+    canonicalVolumeLink,
+    description,
+    pageCount,
+    language,
+    publishedDate,
   };
 
   const handleOpen = () => {
@@ -48,9 +66,8 @@ const BookCard: React.FC<IProps> = ({
   return (
     // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <Col span={7} className="book-card__wrapper" onClick={() => handleOpen()}>
-      <div className="book-card__flex-container">
+      <Card hoverable className="book-card__flex-container" cover={<img alt="imageInfo" className="book-card__thumbnail" src={imageInfo} />}>
         <Title level={4} className="book-card__title">{titleInfo}</Title>
-        <img className="book-card__thumbnail" src={imageInfo} alt={titleInfo} />
         <Title level={5} className="book-card__info">
           Автор/ы:
           {' '}
@@ -61,7 +78,7 @@ const BookCard: React.FC<IProps> = ({
           {' '}
           {categoriesInfo}
         </Title>
-      </div>
+      </Card>
     </Col>
   );
 };

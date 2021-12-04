@@ -1,6 +1,6 @@
 .books {
+	overflow: hidden;
 	min-height: 927px;
-	max-height: 100%;
   display: flex;
 	background-color: rgba(0,146,255,.75);
 }

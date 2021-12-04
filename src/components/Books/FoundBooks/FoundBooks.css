@@ -1,6 +1,5 @@
 .found-books {
-	overflow: hidden;
-  max-width: fit-content;
+	max-width: 100%;
   padding-top: 43px;
   position: relative;
 }

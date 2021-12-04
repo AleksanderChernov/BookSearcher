@@ -5,6 +5,10 @@ export interface BookItem {
   categories: string[];
   title: string;
   imageLinks: string;
+  description: string;
+  canonicalVolumeLink: string
+  pageCount: number;
+  language: string;
 }
 
 export interface ClickedBookItem {
@@ -16,4 +20,9 @@ export interface ClickedBookItem {
   categoriesInfo: string;
   titleInfo: string;
   imageInfo: string;
+  description: string;
+  canonicalVolumeLink: string
+  pageCount: number;
+  language: string;
+  publishedDate: string;
 }
