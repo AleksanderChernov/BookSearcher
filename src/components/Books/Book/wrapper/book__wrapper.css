@@ -1,0 +1,8 @@
+.book__wrapper {
+	max-width: 90%;
+	max-height: 90%;
+	margin: 0 150px;
+	display: flex;
+	flex-flow: column;
+	background-color: white;
+}

@@ -1,3 +1,3 @@
-import combinedReducers from "./reducers"
+import { rootReducer } from './reducers';
 
-export type RootState = ReturnType<typeof combinedReducers>
+export type RootState = ReturnType<typeof rootReducer>;

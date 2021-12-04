@@ -1,0 +1,7 @@
+.book-card__flex-container {
+	display: flex;
+	align-items: center;
+	flex-flow: column;
+	height: 100%;
+	width: 100%;
+}

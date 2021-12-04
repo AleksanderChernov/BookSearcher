@@ -1,29 +1,86 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import { Card, Col, Typography } from 'antd';
+import { useDispatch } from 'react-redux';
+import {
+  NavLink, Route, Routes, useNavigate,
+} from 'react-router-dom';
+import React from 'react';
+import { useBookBindActions } from '../../../hooks/useBookBindActions';
 import placeholderImage from '../../../images/annelies-geneyn-unsplash-book-placeholder.jpg';
 import './BookCard.css';
+import { ClickedBookItem } from '../../../state/models';
 
-interface IncomingProps {
-  authors: string[],
-  categories: string[],
-  title: string,
-  imageLinks: any
+const { Title } = Typography;
+
+interface IProps {
+  authors: string[];
+  categories: string[];
+  title: string;
+  imageLinks: any;
+  description: string;
+  canonicalVolumeLink: string;
+  pageCount: number;
+  language: string;
+  publishedDate: string;
 }
 
-const BookCard: React.FC<IncomingProps> = (props) => {
+const BookCard: React.FC<IProps> = ({
+  authors, categories, imageLinks, title, description,
+  canonicalVolumeLink, pageCount, language, publishedDate,
+}: IProps) => {
+  const authorsInfo = authors
+    ? authors.join(', ')
+    : 'Авторы не указаны';
+  const categoriesInfo = categories
+    ? categories.join(', ')
+    : 'Категории не указаны';
+  const titleInfo = title || 'Нет названия';
+  const imageInfo = imageLinks
+    ? imageLinks.thumbnail
+    : placeholderImage;
 
-  const authorsInfo = props.authors ? props.authors.join(', ') : 'No authors specified';
-  const categoriesInfo = props.categories ? props.categories.join(', ') : 'No categories found';
-  const titleInfo = props.title ? props.title : 'No title found';
-  const imageInfo = props.imageLinks ? props.imageLinks.thumbnail : placeholderImage;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { bindBookInfo } = useBookBindActions();
+  const item: ClickedBookItem = {
+    authors,
+    title,
+    categories,
+    authorsInfo,
+    imageInfo,
+    imageLinks,
+    categoriesInfo,
+    titleInfo,
+    canonicalVolumeLink,
+    description,
+    pageCount,
+    language,
+    publishedDate,
+  };
 
-  return < article className="book-card__wrapper" >
-    <h3 className="book-card__title">{titleInfo}</h3>
-    <img className="book-card__thumbnail"
-      src={imageInfo}
-      alt={titleInfo}
-    />
-    <h3 className="book-card__info">{authorsInfo}</h3>
-    <h3 className="book-card__info">{categoriesInfo}</h3>
-  </article >
-}
+  const handleOpen = () => {
+    dispatch(bindBookInfo(item));
+    navigate(`../book/${title}`);
+  };
+
+  return (
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+    <Col span={7} className="book-card__wrapper" onClick={() => handleOpen()}>
+      <Card hoverable className="book-card__flex-container" cover={<img alt="imageInfo" className="book-card__thumbnail" src={imageInfo} />}>
+        <Title level={4} className="book-card__title">{titleInfo}</Title>
+        <Title level={5} className="book-card__info">
+          Автор/ы:
+          {' '}
+          {authorsInfo}
+        </Title>
+        <Title level={5} className="book-card__info">
+          Категории:
+          {' '}
+          {categoriesInfo}
+        </Title>
+      </Card>
+    </Col>
+  );
+};
 
 export default BookCard;

@@ -1,51 +1,84 @@
 import './SearchBar.css';
-import { useState } from "react";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { useActions } from "../../../hooks/useActions";
+import {
+  Form, Input, Button, Select, Spin, Layout,
+} from 'antd';
+import Title from 'antd/lib/typography/Title';
+import { SearchOutlined } from '@ant-design/icons';
+import React, { useCallback, useState } from 'react';
+import useTypedSelector from '../../../hooks/useTypedSelector';
+import { useBookSearchActions } from '../../../hooks/useBookSearchActions';
+
+const { Option } = Select;
+
+enum errEnum {
+  err400 = 'Request failed with status code 400',
+}
 
 const BookSearchBar: React.FC = () => {
-
   const [bookName, setBookName] = useState('');
-  const [chosenSubject, setChosenSubject] = useState('all');
+  const [chosenSubject, setChosenSubject] = useState('');
   const [chosenRelevance, setChosenRelevance] = useState('relevance');
-  const { searchForBooks } = useActions();
-  const { booksData, error, isLoading } = useTypedSelector((state) => state.bookItems);
-  console.log(booksData.map((item: any) => item));
+  const { searchForBooks } = useBookSearchActions();
+  const { error, isLoading } = useTypedSelector(
+    (state) => state.bookItems,
+  );
 
-  const err400 = 'Request failed with status code 400';
+  console.log(chosenSubject);
+  console.log(bookName);
+  console.log(chosenRelevance);
 
-  const sendForm = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    searchForBooks(bookName, chosenSubject, chosenRelevance)
-  }
+  const onFinish = (e: React.FormEvent<HTMLFormElement>) => {
+    /* e.preventDefault(); */
+    searchForBooks(bookName, chosenSubject, chosenRelevance);
+  };
 
-  return <div className="search-bar__wrapper">
-    <h2 className="search-bar__title">Search</h2>
-    <form onSubmit={sendForm} className="search-bar__form">
-      <input className="search-bar__input"
-        value={bookName}
-        onChange={e => setBookName(e.target.value)} />
-      <h3 className="search-bar__title">Жанры</h3>
-      <select onChange={e => setChosenSubject(e.target.value)}>
-        <option value='all'>Любая</option>
-        <option value='art'>Искусство</option>
-        <option value='biography'>Биография</option>
-        <option value='computers'>Компьютеры</option>
-        <option value='history'>История</option>
-        <option value='medical'>Медицина</option>
-        <option value='poetry'>Поэзия</option>
-      </select>
-      <h3 className="search-bar__title">Сортировка</h3>
-      <select onChange={e => setChosenRelevance(e.target.value)}>
-        <option value='relevance'>Самое релевантное</option>
-        <option value='newest'>Самое новое</option>
-      </select>
-      <button className="search-bar__button">Search</button>
-    </form>
-    {error !== err400 && <h3 className="search-bar__error">{error}</h3>}
-    {error === err400 ? 'Введите парaметры запроса' : ''}
-    {isLoading && <h3 className="search-bar__loading">Loading in process</h3>}
-  </div>
+  const onInputChangeBook = useCallback((e) => setBookName(e.target.value), []);
+  const changeSubject = useCallback((value) => setChosenSubject(value), []);
+  const changeRelevance = useCallback((value) => setChosenRelevance(value), []);
+
+  return (
+    <div className="search-bar__wrapper">
+      <Title className="search-bar__title" level={2}>Поиск</Title>
+      <Form onFinish={onFinish} className="search-bar__form">
+        <Form.Item name="Название" rules={[{ required: true, message: 'Поле необходимо заполнить' }, { max: 35, message: 'Максимум 35 символов' }]}>
+          <Input
+            placeholder="Название"
+            className="search-bar__input"
+            value={bookName}
+            onChange={(e) => onInputChangeBook(e)}
+          />
+        </Form.Item>
+        <Title className="search-bar__title" level={5}>Жанры</Title>
+        <Select defaultValue="Любой" onChange={changeSubject}>
+          <Option value="all">Любой</Option>
+          <Option value="art">Искусство</Option>
+          <Option value="biography">Биография</Option>
+          <Option value="computers">Компьютеры</Option>
+          <Option value="history">История</Option>
+          <Option value="medical">Медицина</Option>
+          <Option value="poetry">Поэзия</Option>
+        </Select>
+        <Title className="search-bar__title" level={5}>Сортировка</Title>
+        <Select defaultValue="relevance" onChange={changeRelevance}>
+          <Option value="relevance">Самое релевантное</Option>
+          <Option value="newest">Самое новое</Option>
+        </Select>
+        <Button type="primary" htmlType="submit" className="search-bar__button" icon={<SearchOutlined />} size="large">
+          Искать
+        </Button>
+      </Form>
+      {error !== errEnum.err400 && (
+        <h3 className="search-bar__error">{error}</h3>
+      )}
+      {error === errEnum.err400 ? 'Введите парaметры запроса' : ''}
+      {isLoading && (
+        <>
+          <h3 className="search-bar__loading">Вывожу результаты</h3>
+          <Spin />
+        </>
+      )}
+    </div>
+  );
 };
 
 export default BookSearchBar;

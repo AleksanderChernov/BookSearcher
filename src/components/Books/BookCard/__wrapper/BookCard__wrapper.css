@@ -1,4 +1,6 @@
 .book-card__wrapper {
+	align-items: center;
+	justify-content: center;
   min-width: 25%;
   max-width: 32%;
   max-height: 400px;

@@ -1,8 +1,8 @@
-import { combineReducers } from "redux";
-import booksReducers from './booksReducers';
+import { combineReducers } from 'redux';
+import { booksReducer } from './booksReducers';
+import { clickedBookReducer } from './clickedBookReducer';
 
-const combinedReducers = combineReducers({
-  bookItems: booksReducers,
+export const rootReducer = combineReducers({
+  bookItems: booksReducer,
+  clickedBook: clickedBookReducer,
 });
-
-export default combinedReducers;
