@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+import { Col, Typography } from 'antd';
 import { useDispatch } from 'react-redux';
 import {
   NavLink, Route, Routes, useNavigate,
@@ -8,6 +9,8 @@ import { useBookBindActions } from '../../../hooks/useBookBindActions';
 import placeholderImage from '../../../images/annelies-geneyn-unsplash-book-placeholder.jpg';
 import './BookCard.css';
 import { ClickedBookItem } from '../../../state/models';
+
+const { Title } = Typography;
 
 interface IProps {
   authors: string[];
@@ -21,11 +24,11 @@ const BookCard: React.FC<IProps> = ({
 }: IProps) => {
   const authorsInfo = authors
     ? authors.join(', ')
-    : 'No authors specified';
+    : 'Авторы не указаны';
   const categoriesInfo = categories
     ? categories.join(', ')
-    : 'No categories found';
-  const titleInfo = title || 'No title found';
+    : 'Категории не указаны';
+  const titleInfo = title || 'Нет названия';
   const imageInfo = imageLinks
     ? imageLinks.thumbnail
     : placeholderImage;
@@ -44,12 +47,22 @@ const BookCard: React.FC<IProps> = ({
 
   return (
     // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-    <article className="book-card__wrapper" onClick={() => handleOpen()}>
-      <h3 className="book-card__title">{titleInfo}</h3>
-      <img className="book-card__thumbnail" src={imageInfo} alt={titleInfo} />
-      <h3 className="book-card__info">{authorsInfo}</h3>
-      <h3 className="book-card__info">{categoriesInfo}</h3>
-    </article>
+    <Col span={7} className="book-card__wrapper" onClick={() => handleOpen()}>
+      <div className="book-card__flex-container">
+        <Title level={4} className="book-card__title">{titleInfo}</Title>
+        <img className="book-card__thumbnail" src={imageInfo} alt={titleInfo} />
+        <Title level={5} className="book-card__info">
+          Автор/ы:
+          {' '}
+          {authorsInfo}
+        </Title>
+        <Title level={5} className="book-card__info">
+          Категории:
+          {' '}
+          {categoriesInfo}
+        </Title>
+      </div>
+    </Col>
   );
 };
 

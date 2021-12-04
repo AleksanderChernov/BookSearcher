@@ -15,7 +15,7 @@ export const searchForBooks = (
   try {
     const { data } = await
     axios.get(
-      `https://books.googleapis.com/books/v1/volumes?q=${item}+subject:${chosenSubject}&orderBy=${chosenRelevance}`,
+      `https://books.googleapis.com/books/v1/volumes?q=${item}+subject:${chosenSubject || ''}&orderBy=${chosenRelevance}`,
       {
         params: {
           maxResults: 40,

@@ -9,3 +9,6 @@
 
 /* Wrapper */
 @import url(./__wrapper/BookCard__wrapper.css);
+
+/* Flex-container */
+@import url(./__flex-container/BookCard__flex-container.css);

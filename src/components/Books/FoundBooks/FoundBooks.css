@@ -1,8 +1,15 @@
 .found-books {
-  min-width: 75%;
-  background-color: grey;
+	overflow: hidden;
+  max-width: fit-content;
   padding-top: 43px;
   position: relative;
+}
+
+.spin-wrapper {
+	margin-top: 15%;
+	display: flex;
+	justify-content: center;
+	align-items: center
 }
 
 /* Title */
