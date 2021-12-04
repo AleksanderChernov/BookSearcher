@@ -23,12 +23,16 @@ const BookSearchBar: React.FC = () => {
     (state) => state.bookItems,
   );
 
+  console.log(chosenSubject);
+  console.log(bookName);
+  console.log(chosenRelevance);
+
   const onFinish = (e: React.FormEvent<HTMLFormElement>) => {
     /* e.preventDefault(); */
     searchForBooks(bookName, chosenSubject, chosenRelevance);
   };
 
-  const onInputChangeBook = useCallback((value) => setBookName(value), []);
+  const onInputChangeBook = useCallback((e) => setBookName(e.target.value), []);
   const changeSubject = useCallback((value) => setChosenSubject(value), []);
   const changeRelevance = useCallback((value) => setChosenRelevance(value), []);
 
@@ -41,7 +45,7 @@ const BookSearchBar: React.FC = () => {
             placeholder="Название"
             className="search-bar__input"
             value={bookName}
-            onChange={onInputChangeBook}
+            onChange={(e) => onInputChangeBook(e)}
           />
         </Form.Item>
         <Title className="search-bar__title" level={5}>Жанры</Title>
