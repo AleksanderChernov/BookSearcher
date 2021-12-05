@@ -5,13 +5,10 @@ import { ClickedBookItem } from '../models';
 
 export const bindBookInfo = (item: ClickedBookItem) => (
   dispatch: Dispatch<ClickedBooksReducerActions>,
-) => {
-  console.log(item);
-  return dispatch({
-    type: ClickedBooksActionList.Add,
-    payload: item,
-  });
-};
+) => dispatch({
+  type: ClickedBooksActionList.Add,
+  payload: item,
+});
 
 export const clearBookInfo = () => (dispatch: Dispatch<ClickedBooksReducerActions>) => dispatch({
   type: ClickedBooksActionList.Clear,

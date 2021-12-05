@@ -1,4 +1,3 @@
-import { RollbackOutlined } from '@ant-design/icons';
 import { Button, Collapse } from 'antd';
 import Title from 'antd/lib/typography/Title';
 import { useNavigate } from 'react-router-dom';

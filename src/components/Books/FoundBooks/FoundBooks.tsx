@@ -1,6 +1,5 @@
 import React from 'react';
 import { Row, Space, Spin } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
 import useTypedSelector from '../../../hooks/useTypedSelector';
 import BookCard from '../BookCard/BookCard';
 import { BookItem } from '../../../state/models';
@@ -11,17 +10,8 @@ const FoundBooks: React.FC = () => {
     (state) => state.bookItems,
   );
 
-  /* const antIcon = <LoadingOutlined style={{ fontSize: 60 }} spin />; */
-
   return (
     <div className="found-books">
-      {/* {isLoading && (
-      <div className="spin-wrapper">
-        <Space size="large">
-          <Spin indicator={antIcon} />
-        </Space>
-      </div>
-      )} */}
       <Row gutter={[5, 20]} justify="space-around" className="found-books__grid-wrapper">
         {!error
           && !isLoading
