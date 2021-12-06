@@ -1,0 +1,59 @@
+{
+        "searchBar": {
+          "title": {
+            "title": "Search"
+          },
+          "options": {
+            "genres": {
+              "title": {
+                "title": "Genre"
+              },
+              "selectGenre": {
+                "all": "All",
+                "art": "Art",
+                "biography": "Biography",
+                "computers": "Computers",
+                "history": "History",
+                "medical": "Medical",
+                "poetry": "Poetry"
+							}
+            },
+            "relevance": {
+              "title": {
+                "title": "Relevance"
+              },
+              "selectRelevance": {
+                "mostRelevant": "Most relevant",
+                "newest": "Newest"
+              }
+            }
+          },
+          "button": "Search"
+        },
+				"foundCards": {
+					"authors": "Author/s",
+					"categories": "Categories",
+					"errors": {
+						"noAuthors": "No authors specified",
+						"noCategories": "No categories specified",
+						"noTitle": "No title"
+					}
+				},
+				"bookCard": {
+					"selectOptions": {
+						"authors": "Author/s",
+						"categories": "Categories",
+						"link": "Link",
+						"pagesAmount": "Pages amount",
+						"language": "Language",
+						"published": "Published"
+					},
+					"pages": "pages",
+					"button-back": "Go back"
+				},
+				"validationErrors": {
+					"inputMustBeFilled": "Input can't be empty",
+					"inputLength": "35 symbols max"
+				},
+				"loading": "Loading in process"
+				}

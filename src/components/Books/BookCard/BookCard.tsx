@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import {
   NavLink, Route, Routes, useNavigate,
 } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { useBookBindActions } from '../../../hooks/useBookBindActions';
 import placeholderImage from '../../../images/annelies-geneyn-unsplash-book-placeholder.jpg';
@@ -28,13 +29,15 @@ const BookCard: React.FC<IProps> = ({
   authors, categories, imageLinks, title, description,
   canonicalVolumeLink, pageCount, language, publishedDate,
 }: IProps) => {
+  const { t } = useTranslation();
+
   const authorsInfo = authors
     ? authors.join(', ')
-    : 'Авторы не указаны';
+    : t('foundCards.errors.noAuthors');
   const categoriesInfo = categories
     ? categories.join(', ')
-    : 'Категории не указаны';
-  const titleInfo = title || 'Нет названия';
+    : t('foundCards.errors.noCategories');
+  const titleInfo = title || t('foundCards.errors.noTitle');
   const imageInfo = imageLinks
     ? imageLinks.thumbnail
     : placeholderImage;
@@ -69,13 +72,13 @@ const BookCard: React.FC<IProps> = ({
       <Card hoverable className="book-card__flex-container" cover={<img alt="imageInfo" className="book-card__thumbnail" src={imageInfo} />}>
         <Title level={4} className="book-card__title">{titleInfo}</Title>
         <Title level={5} className="book-card__info">
-          Автор/ы:
-          {' '}
+          {t('foundCards.authors')}
+          {': '}
           {authorsInfo}
         </Title>
         <Title level={5} className="book-card__info">
-          Категории:
-          {' '}
+          {t('foundCards.categories')}
+          {': '}
           {categoriesInfo}
         </Title>
       </Card>

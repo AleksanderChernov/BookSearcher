@@ -3,6 +3,7 @@ import Title from 'antd/lib/typography/Title';
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import './Book.css';
+import { useTranslation } from 'react-i18next';
 
 const { Panel } = Collapse;
 
@@ -27,6 +28,7 @@ export const Book: React.FC<IProps> = ({
   canonicalVolumeLink, description, pageCount, language, publishedDate,
 }: IProps) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleClick = () => {
     navigate('/');
@@ -42,34 +44,34 @@ export const Book: React.FC<IProps> = ({
           </div>
         </div>
         <Collapse accordion className="book__list">
-          <Panel header="Авторы" key="1">
+          <Panel header={t('bookCard.selectOptions.authors')} key="1">
             <p>{authorsInfo}</p>
           </Panel>
-          <Panel header="Категории" key="2">
+          <Panel header={t('bookCard.selectOptions.categories')} key="2">
             <p>{categoriesInfo}</p>
           </Panel>
-          <Panel header="Ссылка" key="3">
+          <Panel header={t('bookCard.selectOptions.link')} key="3">
             <a href={canonicalVolumeLink}>{canonicalVolumeLink}</a>
           </Panel>
-          <Panel header="Количество страниц" key="4">
+          <Panel header={t('bookCard.selectOptions.pagesAmount')} key="4">
             <p>
               {pageCount}
               {'  '}
-              cтраниц
+              {t('bookCard.pages')}
             </p>
           </Panel>
-          <Panel header="Язык" key="5">
+          <Panel header={t('bookCard.selectOptions.language')} key="5">
             <p>
               {language}
             </p>
           </Panel>
-          <Panel header="Издано" key="6">
+          <Panel header={t('bookCard.selectOptions.published')} key="6">
             <p>
               {publishedDate}
             </p>
           </Panel>
         </Collapse>
-        <Button type="primary" onClick={() => handleClick()}>Вернуться назад</Button>
+        <Button type="primary" onClick={() => handleClick()}>{t('bookCard.button-back')}</Button>
       </article>
     </div>
   );
