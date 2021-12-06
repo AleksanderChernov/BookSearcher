@@ -1,0 +1,59 @@
+{
+        "searchBar": {
+          "title": {
+            "title": "Поиск"
+          },
+          "options": {
+            "genres": {
+              "title": {
+                "title": "Жанры"
+              },
+              "selectGenre": {
+                "all": "Все" ,
+                "art": "Искусство",
+                "biography": "Биография",
+                "computers": "Компьютеры",
+                "history": "История",
+                "medical": "Медицина",
+                "poetry": "Поэзия"
+							}
+            },
+            "relevance": {
+              "title": {
+                "title": "Сортировка"
+              },
+              "selectRelevance": {
+                "mostRelevant": "Самое релевантное",
+                "newest": "Самое новое"
+              }
+            }
+          },
+          "button": "Искать"
+        },
+				"foundCards": {
+					"authors": "Автор/ы",
+					"categories": "Категории",
+					"errors": {
+						"noAuthors": "Авторы не указаны",
+						"noCategories": "Категории не указаны",
+						"noTitle": "Нет названия"
+					}
+				},
+				"bookCard": {
+					"selectOptions": {
+						"authors": "Автор/ы",
+						"categories": "Категории",
+						"link": "Ссылка",
+						"pagesAmount": "Количество страниц",
+						"language": "Язык",
+						"published": "Издано"
+					},
+					"pages": "страниц",
+					"button-back": "Вернуться назад"
+				},
+				"validationErrors": {
+					"inputMustBeFilled": "Поле необходимо заполнить",
+					"inputLength": "Максимум 35 символов"
+				},
+				"loading": "Вывожу результаты"
+    }

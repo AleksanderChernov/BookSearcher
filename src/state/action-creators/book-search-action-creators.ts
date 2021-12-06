@@ -32,7 +32,7 @@ export const searchForBooks = (
   } catch (err: any) {
     dispatch({
       type: BooksActionList.SearchFailed,
-      payload: 'По вашему запросу ничего не найдено',
+      payload: 'Ошибка запроса / Request is possibly erroneous',
     });
   }
 };

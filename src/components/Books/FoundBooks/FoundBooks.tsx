@@ -15,14 +15,14 @@ const FoundBooks: React.FC = () => {
       <Row gutter={[5, 20]} justify="space-around" className="found-books__grid-wrapper">
         {!error
           && !isLoading
-          && booksData.map((item: BookItem) => (
+          && booksData.map((item: BookItem, index: number) => (
             <BookCard
               canonicalVolumeLink={item.canonicalVolumeLink}
               description={item.description}
               pageCount={item.pageCount}
               language={item.language}
               publishedDate={item.publishedDate}
-              key={item.publishedDate + item.title}
+              key={`${item.publishedDate}_${index}`}
               authors={item.authors}
               categories={item.categories}
               title={item.title}
