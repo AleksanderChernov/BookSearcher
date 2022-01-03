@@ -1,7 +1,8 @@
 {
         "searchBar": {
           "title": {
-            "title": "Search"
+            "title": "Input the book",
+						"placeholder": "Title"
           },
           "options": {
             "genres": {

@@ -2,5 +2,6 @@
 	overflow: hidden;
 	min-height: 927px;
   display: flex;
+	flex-flow: column;
 	background-color: rgba(0,146,255,.75);
 }

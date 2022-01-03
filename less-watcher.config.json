@@ -1,0 +1,7 @@
+{
+  "watchFolder": "src/global-less",
+  "outputFolder": "src/global-less",
+  "sourceMap": true,
+  "runOnce": false,
+  "enableJs": true
+}

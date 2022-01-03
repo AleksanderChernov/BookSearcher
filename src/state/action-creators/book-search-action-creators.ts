@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useQuery, useQueryClient } from 'react-query';
 import { Dispatch } from 'redux';
 import { BooksActionList } from '../action-list/action-list';
 import { BooksReducerActions } from '../actions/booksReducerActions';
@@ -22,7 +23,6 @@ export const searchForBooks = (
         },
       },
     );
-    console.log(data);
     const searchResults = data.items.map((items: any) => items.volumeInfo);
 
     dispatch({

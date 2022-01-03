@@ -1,0 +1,4 @@
+.search-bar__options-wrapper {
+	display: flex;
+	justify-content: space-between;
+}

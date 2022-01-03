@@ -1,7 +1,8 @@
 {
         "searchBar": {
           "title": {
-            "title": "Поиск"
+            "title": "Внесите название книги",
+						"placeholder": "Название"
           },
           "options": {
             "genres": {
