@@ -43,6 +43,7 @@
 				"bookCard": {
 					"selectOptions": {
 						"authors": "Автор/ы",
+						"title": "Название",
 						"categories": "Категории",
 						"link": "Ссылка",
 						"pagesAmount": "Количество страниц",

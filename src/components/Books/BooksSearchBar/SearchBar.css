@@ -11,13 +11,14 @@
 @import url(__select/search-bar__select.css);
 .search-bar {
   /* min-height: 927px; */
+  /* background-image: url(../../../images/document_0.jpg); */
   max-height: 100%;
   min-width: fit-content;
   padding: 15px;
   display: flex;
   flex-flow: column;
   align-items: center;
-  background: #B1A296;
+  /* background: @primary; */
 }
 /* Button */
 /* Form */

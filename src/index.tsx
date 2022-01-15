@@ -3,7 +3,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.less';
 import './root.css';
 import './i18n.js';
 

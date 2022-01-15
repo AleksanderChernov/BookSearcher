@@ -37,6 +37,7 @@
 				"no-unused-vars": "off",
 				"import/prefer-default-export": "off",
 				"default-param-last": "off",
-				"react/no-array-index-key": "off"
+				"react/no-array-index-key": "off",
+				"react/no-unstable-nested-components": "off"
     }
 }

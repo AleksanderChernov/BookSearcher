@@ -43,6 +43,7 @@
 				"bookCard": {
 					"selectOptions": {
 						"authors": "Author/s",
+						"title": "Title",
 						"categories": "Categories",
 						"link": "Link",
 						"pagesAmount": "Pages amount",
