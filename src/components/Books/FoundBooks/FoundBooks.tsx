@@ -54,7 +54,13 @@ const FoundBooks: React.FC = () => {
           value: 'Medical',
         },
       ],
-      onFilter: (value: any, record: any) => record.categories.indexOf(value) === 0,
+      onFilter: (value: any, record: any) => {
+        if (record && record.categories && record.categories.length) {
+          console.log(record.categories);
+          return record.categories.includes(value);
+        }
+        return false;
+      },
     },
     {
       title: t('bookCard.selectOptions.authors'),
