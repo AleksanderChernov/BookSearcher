@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Button,
+  ConfigProvider,
+  Empty,
   Row, Space, Spin, Table,
 } from 'antd';
 import { PoweroffOutlined } from '@ant-design/icons';
@@ -33,6 +35,7 @@ const FoundBooks: React.FC = () => {
       title: t('bookCard.selectOptions.categories'),
       dataIndex: 'categories',
       key: 'categories',
+      render: (text: any) => (text ? <p>{text}</p> : <p style={{ color: 'red' }}>Unspecified</p>),
       filters: [
         {
           text: 'Computers',
@@ -57,11 +60,13 @@ const FoundBooks: React.FC = () => {
       title: t('bookCard.selectOptions.authors'),
       dataIndex: 'authors',
       key: 'authors',
+      render: (text: any) => (text ? <p>{text}</p> : <p style={{ color: 'red' }}>Unspecified</p>),
     },
     {
       title: t('bookCard.selectOptions.pagesAmount'),
       dataIndex: 'pageCount',
       key: 'pageCount',
+      render: (text: any) => (text ? <p>{text}</p> : <p style={{ color: 'red' }}>Unspecified</p>),
       sorter: (a: any, b: any) => a.pageCount - b.pageCount,
     },
     {
@@ -92,8 +97,18 @@ const FoundBooks: React.FC = () => {
       title: t('bookCard.selectOptions.published'),
       dataIndex: 'publishedDate',
       key: 'publishedDate',
-      sorter: (a: any, b: any) => a.publishedDate.substring(0, 4) - b.publishedDate.substring(0, 4),
-      // Баг с сортировкой
+      render: (text: any) => (text ? <p>{text.substring(0, 4)}</p> : <p style={{ color: 'red' }}>Unspecified</p>),
+      sorter: (a: any, b: any) => {
+        if (a && a.publishedDate && a.publishedDate.length
+           && b && b.publishedDate && b.publishedDate.length) {
+          return a.publishedDate.substring(0, 4) - b.publishedDate.substring(0, 4);
+        } if (a && a.publishedDate && a.publishedDate.length) {
+          return -1;
+        } if (b && b.publishedDate && b.publishedDate.length) {
+          return 1;
+        }
+        return 0;
+      },
     },
   ];
 
@@ -131,23 +146,25 @@ const FoundBooks: React.FC = () => {
         </Row>
       )}
       {!useRow && !error && !isLoading && (
-      <Table
-        rowKey={(record: { publishedDate: any; }) => record.publishedDate}
-        dataSource={booksData}
-        columns={columns}
-        expandable={{
-          expandedRowRender: (item) => (
-            <>
-              <p style={{ margin: 0 }}>
-                {item.description}
-              </p>
-              <a href={item.canonicalVolumeLink}>
-                {item.canonicalVolumeLink}
-              </a>
-            </>
-          ),
-        }}
-      />
+      <ConfigProvider renderEmpty={() => <Empty description={t('emptyMessage')} />}>
+        <Table
+          rowKey={(record: { publishedDate: any; }) => record.publishedDate}
+          dataSource={booksData}
+          columns={columns}
+          expandable={{
+            expandedRowRender: (item) => (
+              <>
+                <p style={{ margin: 0 }}>
+                  {item.description}
+                </p>
+                <a href={item.canonicalVolumeLink}>
+                  {item.canonicalVolumeLink}
+                </a>
+              </>
+            ),
+          }}
+        />
+      </ConfigProvider>
       )}
     </div>
   );

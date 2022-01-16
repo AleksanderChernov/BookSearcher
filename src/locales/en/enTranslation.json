@@ -57,5 +57,6 @@
 					"inputMustBeFilled": "Input can't be empty",
 					"inputLength": "35 symbols max"
 				},
-				"loading": "Loading in process"
+				"loading": "Loading in process",
+				"emptyMessage": "Found books will be rendered here"
 				}
